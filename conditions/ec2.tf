@@ -1,12 +1,12 @@
 resource "aws_instance" "roboshop" {
   ami           = var.ami_id # left and right side names no need to be same
   instance_type = var.environment == "dev" ? "t3.micro" : "t3.small"
-  vpc_security_group_ids = [ aws_security_group.allow_all.id ]
+  vpc_security_group_ids = [ aws_security_group.devopstf.id ]
   
   tags = var.ec2_tags
 }
 
-resource "aws_security_group" "allow_all" {
+resource "aws_security_group" "devopstf" {
     name        = var.sg_name
     description = var.sg_description
 
